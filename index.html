@@ -86,6 +86,7 @@ header {
   backdrop-filter: blur(12px);
   background: rgba(10,10,15,0.7);
   z-index: 10;
+  gap: 15px; /* espaço leve */
 }
 
 header h1 {
@@ -95,6 +96,12 @@ header h1 {
 .menu-btn {
   cursor: pointer;
   font-size: 22px;
+}
+
+/* RELÓGIO */
+.clock {
+  color: #aaa;
+  font-size: 14px;
 }
 
 /* SIDEBAR */
@@ -282,7 +289,10 @@ footer {
 
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
   <h1>Rillyv2</h1>
+
+  <div class="clock" id="clock"></div>
 </header>
 
 <div class="sidebar" id="sidebar">
@@ -380,6 +390,17 @@ function typing(){
 }
 
 typing();
+
+/* RELÓGIO */
+function updateClock() {
+  const now = new Date();
+  const data = now.toLocaleDateString('pt-BR');
+  const hora = now.toLocaleTimeString('pt-BR');
+  document.getElementById("clock").innerHTML = `${data} • ${hora}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
 
 const sidebar = document.getElementById('sidebar');
 
