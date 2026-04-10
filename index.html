@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rilly | Desenvolvedor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+#intro h1 {
+  color: #ff2d55;
+  animation: pulseIntro 1.5s infinite;
+}
+
+@keyframes pulseIntro {
+  0% {opacity: 0.4;}
+  50% {opacity: 1;}
+  100% {opacity: 0.4;}
+}
+
+/* FUNDO */
+body {
+  background: radial-gradient(circle at top, #0a0a0f, #050507 70%);
+  color: #fff;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('fundo.jpg') center/cover no-repeat;
+  filter: blur(25px) brightness(0.25);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,0,80,0.15), transparent 70%);
+  animation: pulse 4s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+h1, h2, h3, p, a {
+  text-shadow: 0 0 6px rgba(255,0,80,0.2);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(10,10,15,0.7);
+  z-index: 10;
+}
+
+header h1 {
+  color: #ff2d55;
+}
+
+.menu-btn {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.sidebar {
+  position: fixed;
+  left: -260px;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: #050507;
+  border-right: 1px solid rgba(255,0,80,0.2);
+  transition: 0.3s;
+  padding: 20px;
+  z-index: 20;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,0,80,0.1);
+  color: #ff2d55;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+}
+
+.hero-content {
+  max-width: 600px;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,100% {opacity: 0;}
+  50% {opacity: 1;}
+}
+
+.hero h2 {
+  font-size: 2.8rem;
+}
+
+.hero p {
+  margin: 15px 0;
+  color: #aaa;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #ff2d55, #ff004c);
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+section {
+  padding: 100px 8%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(20,20,30,0.6);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255,0,80,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(255,0,80,0.2);
+}
+
+.project {
+  border-left: 3px solid #ff2d55;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+}
+
+/* ICONES */
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  margin-right: 15px;
+  font-size: 27px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #ff2d55;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro" onclick="startSite()">
+  <h1>CLIQUE PARA ENTRAR</h1>
+</div>
+
+<audio id="music" src="music.mp3" loop></audio>
+
+<header>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <h1>Rillyv2</h1>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <a onclick="scrollToSection('sobre')">Sobre</a>
+  <a onclick="scrollToSection('habilidades')">Habilidades</a>
+  <a onclick="scrollToSection('projetos')">Projetos</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 id="typingText" class="typing"></h2>
+    <p>Buscando minha primeira oportunidade como Jovem Aprendiz na área de tecnologia.</p>
+
+    <button class="btn" onclick="scrollToSection('projetos')">Ver projetos</button>
+
+    <div class="socials">
+      <a href="https://github.com/rilly0312" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/__ryan.lima__" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://steamcommunity.com/id/rilly0312v2" target="_blank"><i class="fab fa-steam"></i></a>
+      <a href="https://discord.com/users/645410235128741908" target="_blank"><i class="fab fa-discord"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2>Sobre mim</h2>
+  <p>
+    Sou estudante do 3º ano do Ensino Médio e apaixonado por tecnologia.
+    Tenho conhecimento em HTML, CSS e lógica de programação.
+    <br><br>
+    Estou sempre buscando evoluir e aprender novas tecnologias,
+    com foco em desenvolvimento web e projetos modernos.
+    <br><br>
+    Meu objetivo é conquistar minha primeira oportunidade como desenvolvedor
+    e crescer na área de tecnologia.
+  </p>
+</section>
+
+<section id="habilidades">
+  <h2>Habilidades</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>HTML & CSS</h3>
+      <p>Criação de sites modernos, responsivos e bem estruturados.</p>
+    </div>
+    <div class="card">
+      <h3>Java & C#</h3>
+      <p>Base em lógica de programação e desenvolvimento.</p>
+    </div>
+    <div class="card">
+      <h3>Informática</h3>
+      <p>Conhecimentos em sistemas, hardware e software.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <h2>Projetos</h2>
+  <div class="grid">
+    <div class="card project">
+      <h3>Site Interativo</h3>
+      <p>Projeto com animações e layout moderno.</p>
+    </div>
+    <div class="card project">
+      <h3>Landing Page</h3>
+      <p>Página de apresentação com design responsivo.</p>
+    </div>
+    <div class="card project">
+      <h3>Portfólio</h3>
+      <p>Site pessoal para mostrar minhas habilidades.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Rillyv2 • Desenvolvedor em formação
+</footer>
+
+<script>
+
+function startSite(){
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("music").play();
+}
+
+const text = "Desenvolvedor Front-End em formação";
+let i = 0;
+
+function typing(){
+  if(i < text.length){
+    document.getElementById("typingText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 60);
+  }
+}
+
+typing();
+
+const sidebar = document.getElementById('sidebar');
+
+function toggleMenu() {
+  sidebar.classList.toggle('active');
+}
+
+function scrollToSection(id) {
+  sidebar.classList.remove('active');
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+</script>
+
+</body>
+</html>
