@@ -17,6 +17,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* INTRO */
 #intro {
   position: fixed;
   inset: 0;
@@ -43,7 +44,6 @@
 body {
   background: radial-gradient(circle at top, #0a0a0f, #050507 70%);
   color: #fff;
-  position: relative;
 }
 
 body::before {
@@ -74,6 +74,7 @@ h1, h2, h3, p, a {
   text-shadow: 0 0 6px rgba(255,0,80,0.2);
 }
 
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -96,6 +97,7 @@ header h1 {
   font-size: 22px;
 }
 
+/* SIDEBAR */
 .sidebar {
   position: fixed;
   left: -260px;
@@ -127,6 +129,7 @@ header h1 {
   color: #ff2d55;
 }
 
+/* HERO */
 .hero {
   height: 100vh;
   display: flex;
@@ -163,6 +166,7 @@ header h1 {
   color: #aaa;
 }
 
+/* BOTÃO */
 .btn {
   padding: 12px 25px;
   border-radius: 12px;
@@ -191,16 +195,19 @@ header h1 {
   left: 100%;
 }
 
+/* SEÇÕES */
 section {
   padding: 100px 8%;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
 }
 
+/* CARDS */
 .card {
   background: rgba(20,20,30,0.6);
   border-radius: 20px;
@@ -210,21 +217,37 @@ section {
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 20px rgba(255,0,80,0.2);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 25px rgba(255,0,80,0.25);
 }
 
 .project {
   border-left: 3px solid #ff2d55;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
+/* PROJETOS FIX */
+#projetos h2 {
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 5;
+  display: inline-block;
 }
 
-/* ICONES */
+#projetos h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff2d55, transparent);
+}
+
+#projetos .grid {
+  margin-top: 20px;
+}
+
+/* SOCIAL */
 .socials {
   margin-top: 20px;
 }
@@ -233,11 +256,17 @@ footer {
   margin-right: 15px;
   font-size: 27px;
   color: #aaa;
-  text-decoration: none;
 }
 
 .socials a:hover {
   color: #ff2d55;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
 }
 
 </style>
@@ -249,7 +278,7 @@ footer {
   <h1>CLIQUE PARA ENTRAR</h1>
 </div>
 
-<audio id="music" src="music.mp3" loop></audio>
+<audio id="music" src="music.mp3" loop preload="auto"></audio>
 
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -265,7 +294,7 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <h2 id="typingText" class="typing"></h2>
-    <p>Buscando minha primeira oportunidade como Jovem Aprendiz na área de tecnologia.</p>
+    <p>Buscando minha primeira oportunidade como Jovem Aprendiz na área de tecnologia. Focado em evolução constante e criação de projetos modernos.</p>
 
     <button class="btn" onclick="scrollToSection('projetos')">Ver projetos</button>
 
@@ -281,14 +310,8 @@ footer {
 <section id="sobre">
   <h2>Sobre mim</h2>
   <p>
-    Sou estudante do 3º ano do Ensino Médio e apaixonado por tecnologia.
-    Tenho conhecimento em HTML, CSS e lógica de programação.
-    <br><br>
-    Estou sempre buscando evoluir e aprender novas tecnologias,
-    com foco em desenvolvimento web e projetos modernos.
-    <br><br>
-    Meu objetivo é conquistar minha primeira oportunidade como desenvolvedor
-    e crescer na área de tecnologia.
+    Sou estudante do 3º ano do Ensino Médio com interesse em desenvolvimento web. 
+    Tenho conhecimento em HTML, CSS e lógica de programação, buscando sempre evoluir e aprender novas tecnologias.
   </p>
 </section>
 
@@ -299,10 +322,12 @@ footer {
       <h3>HTML & CSS</h3>
       <p>Criação de sites modernos, responsivos e bem estruturados.</p>
     </div>
+
     <div class="card">
       <h3>Java & C#</h3>
       <p>Base em lógica de programação e desenvolvimento.</p>
     </div>
+
     <div class="card">
       <h3>Informática</h3>
       <p>Conhecimentos em sistemas, hardware e software.</p>
@@ -317,10 +342,12 @@ footer {
       <h3>Site Interativo</h3>
       <p>Projeto com animações e layout moderno.</p>
     </div>
+
     <div class="card project">
       <h3>Landing Page</h3>
       <p>Página de apresentação com design responsivo.</p>
     </div>
+
     <div class="card project">
       <h3>Portfólio</h3>
       <p>Site pessoal para mostrar minhas habilidades.</p>
@@ -336,7 +363,9 @@ footer {
 
 function startSite(){
   document.getElementById("intro").style.display = "none";
-  document.getElementById("music").play();
+  const music = document.getElementById("music");
+  music.volume = 0.1;
+  music.play();
 }
 
 const text = "Desenvolvedor Front-End em formação";
